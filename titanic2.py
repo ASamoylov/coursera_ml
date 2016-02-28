@@ -6,6 +6,7 @@ Created on Sun Jan 31 23:08:22 2016
 """
 
 import numpy as np
+import numpy
 import pandas 
 import sklearn.tree
 
@@ -45,6 +46,6 @@ importances = model.feature_importances_
 
 print importances
 
-print model.classes_()
+print model.classes_
 
     
