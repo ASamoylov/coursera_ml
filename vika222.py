@@ -70,7 +70,8 @@ data.groupby('Origin')['DepDelay'].filter()
 
 
 
-
+#c = data.groupby('Origin')
+#y = c.filter(lambda x: x['Distance'].count() > 1000)
 
 
 
