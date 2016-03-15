@@ -9,24 +9,25 @@ import pandas as pd
 import numpy as np
 
 
-#data = pd.read_csv('my2008.csv')
+data = pd.read_csv('2008.csv')
 
-print data['CancellationCode'].value_counts()
+#самая частая причина отмены рейса
+# data['CancellationCode'] - дает объект Series
+# Series.describe() - дает некоторую статистику, для нечисловых данных top - поле, которые хранит самый частое значение
+print data['CancellationCode'].describe()
+print data['CancellationCode'].describe()['top']
+# 'B' - погода
 
-n_d = dict()
+#Максимальное время задержки из-за погоды
+print data['WeatherDelay'].max()
+#797.0
 
-for index, n in data['Origin'].iterrows():
-    data[ data['Origin']]
-        n_d.update({n: d})
-        
-m = 0
-num = 0
-for k in n_d.keys():
-    if m < n_d[k]:
-        m = n_d[k]
-        num = k
-    
-    
+# среднее минимальное и максимальное расстояние для самолета
+print "Среднее: %f" % data['Distance'].mean()
+print "Минимум: %f" % data['Distance'].min()
+print "Максимум: %f" % data['Distance'].max()
+
+
 
 
 
