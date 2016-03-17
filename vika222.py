@@ -72,7 +72,9 @@ data.groupby('Origin')['DepDelay'].filter()
 
 #c = data.groupby('Origin')
 #y = c.filter(lambda x: x['Distance'].count() > 1000)
-
+#z = y.groupby('Origin')['FlightNum', 'DepDelay']
+#for air, grp in z:
+#    print air, 1.0*grp[ grp['DepDelay']> 0]['DepDelay'].count()/grp['DepDelay'].count()
 
 
 
