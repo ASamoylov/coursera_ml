@@ -21,6 +21,17 @@ def Q(x,y,w):
 def q_grad(x,y,w):
     dq = np.dot( (np.sum(w*x, axis=1) - y), x ) / len(x)
     return dq
+    
+def q_grad2(x,y,w):
+    dq=np.zeros(x.shape[1])
+    for i in range(x.shape[1]):
+        tmp=0
+        for j in range(x.shape[0]):
+            tmp = tmp + (np.sum(w*x[j,:]) - y[j])*x[j,i]
+        dq[i] = tmp / len(x)
+        
+    #dq = np.dot( (np.sum(w*x, axis=1) - y), x ) / len(x)
+    return dq
 
 def const_step(iter):
     return 0.01
@@ -51,7 +62,7 @@ q_h = dict()
 for h in np.power(10.0, np.arange(-3, 1)):
     def const_step_it(iter):
         return h
-    (w, qi) = grad_descent(x_train, y_train, w0, const_step_it, q_grad, n_iter)
+    (w, qi) = grad_descent(x_train, y_train, w0, const_step_it, q_grad2, n_iter)
     q_h.update({h: qi[-1]})
 
 for (k,v) in sorted(q_h.items()):
@@ -61,12 +72,12 @@ print "decreasing_step_it:"
 def decreasing_step_it(iter):
     return 1/np.log2(iter+100.0)
 
-(w, qi) = grad_descent(x_train, y_train, w0, decreasing_step_it, q_grad, n_iter)
+(w, qi) = grad_descent(x_train, y_train, w0, decreasing_step_it, q_grad2, n_iter)
 print qi[-1]
 print w
 
     
-(w, qi) = grad_descent(x_train, y_train, w0, const_step, q_grad, n_iter) 
+(w, qi) = grad_descent(x_train, y_train, w0, const_step, q_grad2, n_iter) 
 
 print qi[-1]
 print w

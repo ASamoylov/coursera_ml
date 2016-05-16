@@ -41,14 +41,14 @@ for p in np.linspace(0.1,0.9,5):
     print "p = %f\tmean: %f\tmedian: %f\tdisp: %f\tsqe: %f\n\n" % (p, avr, med, disp, sd)
 ''' 
     
-
+'''
 n=10
 for p in np.linspace(0.1,0.9,5):
     binom = np.random.binomial(n,p, size=500)
     avr, med, disp, sd = get_stat(binom)
     get_plot(binom, 'Binomial: n = {} p = {}'.format(n,p))
     print "p = {}\tmean: {}\tmedian: {}\tdisp: {}\tsqe: {}\n\n".format(p, avr, med, disp, sd)
-
+'''
 
 for lam in np.linspace(1,10,4):
     pu = np.random.poisson(lam, size=500)

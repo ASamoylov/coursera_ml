@@ -187,13 +187,3 @@ good_probs = find_probs(counts, alpha=0.1)
 
 make_classify_log = lambda m: classify_log(class_probs, good_probs, m)
 print accuracy(data_test.target, data_test.text.apply(make_classify_log))
-
-
-
-
-        
-
-
-
-
-
