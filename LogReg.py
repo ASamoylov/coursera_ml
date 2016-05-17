@@ -46,6 +46,7 @@ def q_grad_lg(x,y,w):
     dq = tmp / len(x)
     x1=x[:,0]
     x2=x[:,1]
+
     w1 = sum((1-1/(1+np.exp(-y*np.sum(w*x, axis=1))))*y*x1) / len(x)
     w2 = sum((1-1/(1+np.exp(-y*np.sum(w*x, axis=1))))*y*x2) / len(x)
     return dq
@@ -76,10 +77,11 @@ sclr = sklearn.preprocessing.StandardScaler()
 
 x = sclr.fit_transform(data[['x1', 'x2']])
 x = data[['x1','x2']].values
+
 y = data['target'].values
 w0 = np.zeros(x.shape[1])
 
-(w,qi) = grad_descent_l2(x,y,w0, 0.1, 10, q_grad_lg , 10000)
+(w,qi) = grad_descent_l2(x,y,w0, 0.1, 0, q_grad_lg , 10000)
 
 a = 1 / (1+np.exp(-np.sum(w*x, axis=1)))
 print "%.3f" % sklearn.metrics.roc_auc_score(y,a)
