@@ -9,7 +9,7 @@ from nltk.stem.snowball import RussianStemmer
 
 mystem = RussianStemmer()
 
-str0 = "поезд"
+str0 = "поздно"
 
 print mystem.stem(str0.decode("utf-8"))
 
